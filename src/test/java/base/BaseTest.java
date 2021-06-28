@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeTest;
 import pages.HomePage;
 
 import java.util.List;
@@ -20,7 +22,8 @@ public class BaseTest {
     public void setUp() {
         System.setProperty("webdriver.chrome.driver", "resources/chromedriver");
         driver = new ChromeDriver();
-        driver.get("https://the-internet.herokuapp.com/");
+        //driver.get("https://the-internet.herokuapp.com/");
+        goHome();
 
         // provide a handle in our test layer for HomePage to our application
         homePage = new HomePage(driver);  // instantiating HomePage
@@ -42,6 +45,11 @@ public class BaseTest {
 //        System.out.println("Number of menu items: " + menuItems.size());
 //
 //        System.out.println(driver.getTitle());
+    }
+
+    @BeforeMethod
+    public void goHome() {
+        driver.get("https://the-internet.herokuapp.com/");
     }
 
     @AfterClass
