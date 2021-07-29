@@ -7,6 +7,8 @@ public class FileUploadPage {
   private WebDriver driver;
   private By inputField = By.id("file-upload");
   private By uploadButton = By.id("file-submit");
+  private By uploadedFileName = By.id("uploaded-files");
+  private By successMessage = By.tagName("h3");
   //private By dragAndDropUploadArea = By.id("drag-drop-upload");
 
   public FileUploadPage(WebDriver driver) {
@@ -24,5 +26,9 @@ public class FileUploadPage {
   public void uploadFile(String absolutePathOfFile) {
     driver.findElement(inputField).sendKeys(absolutePathOfFile);
     clickUploadButton();
+  }
+
+  public String getUploadedFileName() {
+    return driver.findElement(uploadedFileName).getText();
   }
 }

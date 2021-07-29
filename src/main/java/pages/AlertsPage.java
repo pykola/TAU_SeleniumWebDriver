@@ -1,6 +1,5 @@
 package pages;
 
-import java.awt.SystemTray;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
